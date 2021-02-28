@@ -1,0 +1,15 @@
+body
+  background: map-get($colors, bg)
+  color: map-get($colors, text)
+  font-family: map-get($fonts, body)
+
+a
+  text-decoration: none
+  color: map-get($colors, accent)
+
+  &:not([href])
+    cursor: not-allowed
+
+@for $i from 1 through 6
+  h#{$i}
+    font-family: map-get($fonts, head)

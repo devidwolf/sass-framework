@@ -1,0 +1,35 @@
+/// get stronger or lower color shade based on base color by going closer to base color by given amount
+//// when base dark lower goes darker (lower contrast) and stronger brighter (stronger contrast)
+//// when base light lower goes brighter (lower contrast) and stronger darker (stronger contrast)
+///
+/// @param {string} $x
+///   `stronger` (generate stronger contrast shade) or `lower` (generate lower contrast shade)
+/// @param {color} $bg-color
+///   backgroud color
+/// @param {color} $fg-color
+///   foreground color
+/// @return {color} stronger or lower color variant of `$fg-color` on `$bg-color`
+@function base-x-shade($x, $bg-color, $fg-color, $amount)
+  $condition: false
+
+  @if $x == 'stronger'
+    $condition: lightness($bg-color) > 50
+  @else if $x == 'lower'
+    $condition: lightness($bg-color) < 50
+  @else
+    @debug $condition
+
+  // @debug $condition
+
+  @if ($condition)
+    @return darken($fg-color, $amount)
+  @else
+    @return lighten($fg-color, $amount)
+
+/// shorthand for stronger color
+@function base-stronger-shade($bg-color, $fg-color, $amount)
+  @return base-x-shade('stronger', $bg-color, $fg-color, $amount)
+
+/// shorthand for lower color
+@function base-lower-shade($bg-color, $fg-color, $amount)
+  @return base-x-shade('lower', $bg-color, $fg-color, $amount)

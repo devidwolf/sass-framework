@@ -1,0 +1,38 @@
+
+/// cards
+.cards-x
+  display: flex
+  justify-content: space-between
+
+  .card + .card
+    margin-left: 1rem
+
+.card
+  $padding: 1rem
+  padding: $padding
+  border-radius: map-get($sizes, border-radius)
+  background: base-lower-shade(map-get($colors, text), map-get($colors, bg), 5)
+  box-shadow: 0px 0px 26px -3px rgba(0,0,0,0.5)
+
+  img
+    width: calc(100% + 2 * #{$padding})
+    position: relative
+    left: -$padding
+    // webkit-user-drag: none
+    // -khtml-user-drag: none
+    // -moz-user-drag: none
+    // -o-user-drag: none
+    // user-drag: none
+    
+    // apply border radii on top left and right when the image is the first child of the card
+    &:first-child
+      top: -$padding
+      border-top-left-radius: map-get($sizes, border-radius)
+      border-top-right-radius: map-get($sizes, border-radius)
+
+    // apply border radii on bottom left and right when the image is the last child of the card
+    &:last-child
+      // TODO: aligne to bottom
+      bottom: -$padding
+      border-bottom-left-radius: map-get($sizes, border-radius)
+      border-bottom-right-radius: map-get($sizes, border-radius)

@@ -1,0 +1,23 @@
+= SASS Framwork
+
+== Installation
+[source, sass]
+----
+@import path/to/sass-framework/import
+----
+
+== Configuration
+Override default variables by passing your owns.
+|===
+| Variable | Default
+
+| `$colors`
+
+|===
+
+
+== Further Usage
+
+.media queris
+
+.functions
