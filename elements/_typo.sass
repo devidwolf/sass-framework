@@ -10,6 +10,16 @@ a
   &:not([href])
     cursor: not-allowed
 
+  &:focus
+    outline-color: map-get($colors, accent)
+
+  @media (hover: hover) and (pointer: fine)
+    &:hover, &:focus
+      text-decoration: underline
+
+    &:active
+      color: adjust-hue(map-get($colors, accent), 90)
+
 @for $i from 1 through 6
   h#{$i}
     font-family: map-get($fonts, head)

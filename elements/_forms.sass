@@ -5,5 +5,22 @@ button, input, select, .button, .button-list a
   background: map-get($colors, text)
   color: map-get($colors, bg)
 
-button, input[type=submit]
+// do not apply anchor hover effect on buttons
+a.button, .button-list a
+  &:hover, &:focus
+    text-decoration: none
+
+button, input[type=submit], .button, .button-list a
   cursor: pointer
+
+  &:focus
+    outline-color: map-get($colors, accent)
+
+  @media (hover: hover) and (pointer: fine)
+    &:hover, &:focus
+      background: darken(map-get($colors, text), 10)
+      color: lighten(map-get($colors, bg), 10)
+
+    &:active
+      background: darken(map-get($colors, text), 20)
+      color: lighten(map-get($colors, bg), 20)
